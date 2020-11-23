@@ -32,10 +32,10 @@
             ]
         },
         "github": {
-            "url": "https://github.com/wangeditor-team/wangeditor"
+            "url": "https://github.com/imooc-lego/students-learn-task"
         },
         "tbfed-pagefooter": {
-            "copyright":"Copyright &copy wangEditor (2020 - present)"
+            "copyright":"Copyright &copy imooc-lego (2020 - present)"
         },
         "hide-element": {
             "elements": [".gitbook-link"]
