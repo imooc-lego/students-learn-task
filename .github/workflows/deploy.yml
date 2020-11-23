@@ -7,6 +7,11 @@ name: deploy
 on:
   push:
     branches: [ main ]
+    paths:
+      - '.github/workflows/*'
+      - 'docs/**'
+      - 'extra-html-files/*'
+      - 'book.json'
 jobs:
   deploy:
     runs-on: ubuntu-latest
