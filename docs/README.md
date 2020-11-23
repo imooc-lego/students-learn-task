@@ -6,7 +6,7 @@
 
 ## 精选文章
 
-待整理……
+- [【双越老师】我如何理解 Web 前端架构师 的角色和职责](./pages/👨‍🏫双越老师/01-我如何理解Web前端架构师的角色和职责.md)
 
 ## 查看其他同学的作业和笔记
 
@@ -34,7 +34,7 @@ npm run dev # 访问 localhost:4000
 
 - 新建 `docs/pages/<yourName>` ，`<yourName>` 即你在慕课网的用户名（或昵称、网名，都可以）
 - 新建 `docs/pages/<yourName>/README.md` ，内容参考现有的 `docs/pages/双越老师/README.md`
-- 在 `docs/pages/<yourName>` 下新建博客文件，命名格式按照 `01-xxx.md` `02-yyy.md` `03-zzz.md` ...
+- 在 `docs/pages/<yourName>` 下新建博客文件，命名格式按照 `01-xxx.md` `02-yyy.md` `03-zzz.md` ... 一定以序号 `01-` `02-` 开头！！ 
 - 如果需要图片，可把图片文件放在 `docs/images` 中，然后在博客中引入
 
 
