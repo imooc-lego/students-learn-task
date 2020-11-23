@@ -1,0 +1,51 @@
+{
+    "title": "Web 前端架构师课-学员分享",
+    "author": "lego-team",
+    "description": "Web 前端架构师课-学员分享",
+    "language": "zh-hans",
+    "root": "docs",
+    "plugins": [
+        "advanced-emoji",
+        "todo",
+        "chapter-fold",
+        "-lunr",
+        "-search",
+        "search-pro",
+        "github",
+        "splitter",
+        "tbfed-pagefooter",
+        "hide-element",
+        "summary",
+        "extra-html"
+    ],
+    "pluginsConfig": {
+        "sharing": {
+            "facebook": false,
+            "twitter": false,
+            "google": false,
+            "weibo": true,
+            "instapaper": false,
+            "vk": false,
+            "all": [
+                "facebook", "google", "twitter",
+                "weibo", "instapaper"
+            ]
+        },
+        "github": {
+            "url": "https://github.com/wangeditor-team/wangeditor"
+        },
+        "tbfed-pagefooter": {
+            "copyright":"Copyright &copy wangEditor (2020 - present)"
+        },
+        "hide-element": {
+            "elements": [".gitbook-link"]
+        },
+        "extra-html": {
+            "header": {
+                "files": [
+                    "extra-html-files/baidu-tongji.html"
+                ]
+            }
+        }
+    }
+}

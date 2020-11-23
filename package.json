@@ -1,0 +1,41 @@
+{
+  "name": "students-learn-task",
+  "version": "1.0.0",
+  "description": "学员学习任务，作业、打卡、分享",
+  "main": "index.js",
+  "scripts": {
+    "gitbook-install": "gitbook install",
+    "dev": "gitbook serve",
+    "build": "gitbook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imooc-lego/students-learn-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imooc-lego/students-learn-task/issues"
+  },
+  "homepage": "https://github.com/imooc-lego/students-learn-task#readme",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.2"
+  },
+  "dependencies": {
+    "gitbook-plugin-advanced-emoji": "^0.2.2",
+    "gitbook-plugin-anchor-navigation-ex": "^1.0.14",
+    "gitbook-plugin-back-to-top-button": "^0.1.4",
+    "gitbook-plugin-chapter-fold": "0.0.4",
+    "gitbook-plugin-extra-html": "^1.0.1",
+    "gitbook-plugin-github": "^2.0.0",
+    "gitbook-plugin-hide-element": "0.0.4",
+    "gitbook-plugin-page-toc-button": "^0.1.1",
+    "gitbook-plugin-search-pro": "^2.0.2",
+    "gitbook-plugin-splitter": "0.0.8",
+    "gitbook-plugin-summary": "^1.0.0",
+    "gitbook-plugin-tbfed-pagefooter": "0.0.1",
+    "gitbook-plugin-theme-comscore": "0.0.3",
+    "gitbook-plugin-todo": "^0.1.3",
+    "gitbook-plugin-toggle-chapters": "0.0.3"
+  }
+}
