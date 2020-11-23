@@ -4,6 +4,10 @@
 
 汇总所有同学的：学习打卡，作业，学习笔记，分享
 
+## 精选文章
+
+待整理……
+
 ## 查看其他同学的作业和笔记
 
 页面左侧目录，就是所有同学的作业和学习笔记。
@@ -39,11 +43,12 @@ npm run dev # 访问 localhost:4000
 
 ## 提交 pull request
 
-从你 fork 的仓库，提交 pull request 到 https://github.com/imooc-lego/students-learn-task ，请求合并到 `main` 分支。
-可以在课程群里通知管理员，合并 pull request 。
+- 从你 fork 的仓库，提交 pull request 到 https://github.com/imooc-lego/students-learn-task ，**请求合并到 `main` 分支**
+- 确定 https://github.com/imooc-lego/students-learn-task 有你提交的 pull request
+- 去课程群里通知管理员，管理员会合并 pull request （除非你提交了违规内容）
 
 ## 自动发布
 
-pull request 被合并之后，会触发 [github actions](https://github.com/imooc-lego/students-learn-task/actions) ，自动打包、发布到 https://imooc-lego.github.io/ 。
+pull request 被合并之后，会触发 [github actions](https://github.com/imooc-lego/students-learn-task/actions) ，自动打包、发布到 https://imooc-lego.github.io 。
 
 过程大概 3-5 分钟。
