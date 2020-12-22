@@ -4,6 +4,9 @@
 
 ## pages
 
+- [🍀ricky94](pages/🍀ricky94/README.md)
+
+    - [第一周：需求分析和架构设计：做什么，如何做？](pages/🍀ricky94/01-第一周.md)
 - [👨‍🏫Sam老师](pages/👨‍🏫Sam老师/README.md)
 
     - [前端未来趋势分析](pages/👨‍🏫Sam老师/01-前端未来趋势分析.md)
@@ -16,6 +19,3 @@
 
     - [在学习了一门技术的基础知识后，怎样持续提升这门技术达到更高水平？](pages/👨‍🏫张轩老师/01.md)
     - [Typescript 是不是前端开发必备的技能？一个 ts 黑到 ts 粉的心路历程](pages/👨‍🏫张轩老师/02.md)
-- [🍀ricky94](pages/🍀ricky94/README.md)
-
-    - [第一周：需求分析和架构设计：做什么，如何做？](pages/🍀ricky94/01-第一周.md)
