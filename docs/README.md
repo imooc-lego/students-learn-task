@@ -37,9 +37,14 @@ npm run dev # 访问 localhost:4000
 - 在 `docs/pages/<yourName>` 下新建博客文件，命名格式按照 `01-xxx.md` `02-yyy.md` `03-zzz.md` ... 一定以序号 `01-` `02-` 开头！！ 
 - 如果需要图片，可把图片文件放在 `docs/images` 中，然后在博客中引入
 
+## 删掉 `docs/SUMMARY.md`
 
+你在本地执行 `npm run dev` 或 `npm run build` 都会自动生成 `docs/SUMMARY.md` 。
 
-写完之后，提交代码到 github 。
+检查一下，**如果你的代码中有 `docs/SUMMARY.md` 这个文件，请删除掉它**。\
+否则，可能会和别人产生冲突，请一定注意检查！！！
+
+最后，提交代码到 github 。
 
 ## 提交 pull request
 
