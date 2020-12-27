@@ -32,10 +32,10 @@ npm run dev # 访问 localhost:4000
 
 作业、笔记，都可以用博客的形式。注意，**全程使用 markdown 语法**，不懂的自己去查。
 
-- 新建 `docs/pages/<yourName>` ，`<yourName>` 即你在慕课网的用户名（或昵称、网名，都可以）
+- 新建 `docs/pages/<yourName>/` 目录 ，`<yourName>` 即你在慕课网的用户名（或昵称、网名，都可以）
 - 新建 `docs/pages/<yourName>/README.md` ，内容参考现有的 `docs/pages/双越老师/README.md`
-- 在 `docs/pages/<yourName>` 下新建博客文件，命名格式按照 `01-xxx.md` `02-yyy.md` `03-zzz.md` ... 一定以序号 `01-` `02-` 开头！！ 
-- 如果需要图片，可把图片文件放在 `docs/images` 中，然后在博客中引入
+- 在 `docs/pages/<yourName>/` 下新建博客文件，命名格式按照 `01-xxx.md` `02-yyy.md` `03-zzz.md` ... 一定以序号 `01-` `02-` 开头！！ 
+- 如果需要图片，可把图片文件放在 `docs/pages/<yourName>/images/` 中，然后在博客中引入
 
 ## 删掉 `docs/SUMMARY.md`
 

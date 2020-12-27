@@ -6,7 +6,7 @@
 
 最终，我们总结出了以下几点，证明我们这门课和实战课确实完全不一样。
 
-![](../../images/different.png)
+![](./images/different.png)
 
 ## 真正的线上项目，不是 demo
 
