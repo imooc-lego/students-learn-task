@@ -57,3 +57,9 @@ npm run dev # 访问 localhost:4000
 pull request 被合并之后，会触发 [github actions](https://github.com/imooc-lego/students-learn-task/actions) ，自动打包、发布到 https://imooc-lego.github.io 。
 
 过程大概 3-5 分钟。
+
+## 重点提醒
+
+- 第一次，记得新建 `docs/pages/<yourName>/README.md` 文件
+- 图片文件都放在 `docs/pages/<yourName>/images/` 目录中
+- 提交时记得删掉 `docs/SUMMARY.md` 文件，否则容易产生冲突
