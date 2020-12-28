@@ -6,7 +6,7 @@
   "scripts": {
     "gitbook-install": "gitbook install",
     "dev": "gitbook serve",
-    "build": "gitbook build"
+    "build": "gitbook serve build"
   },
   "repository": {
     "type": "git",
