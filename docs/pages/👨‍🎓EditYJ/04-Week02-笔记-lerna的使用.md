@@ -36,5 +36,6 @@
     "access": "public"
   }
   ```
+- 提交git修改，并推送到github
 - 使用npm login登陆npm
 - 使用lerna publish修改版本号并向npm推送包
