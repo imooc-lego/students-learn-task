@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/imooc-lego/students-learn-task#readme",
   "devDependencies": {
-    "gitbook-cli": "^2.3.2"
+    "gitbook-cli": "^2.3.2",
+    "graceful-fs": "^4.2.4"
   },
   "dependencies": {
     "gitbook-plugin-advanced-emoji": "^0.2.2",
