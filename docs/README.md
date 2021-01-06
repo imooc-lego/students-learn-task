@@ -64,7 +64,7 @@ npm run dev # 访问 localhost:4000
 
 ## 自动发布
 
-pull request 被合并之后，会触发 [github actions](https://github.com/imooc-lego/students-learn-task/actions) ，自动打包、发布到 https://imooc-lego.github.io 。
+pull request 被合并之后，会触发 [github actions](https://github.com/imooc-lego/students-learn-task/actions) ，自动打包、发布到 http://homework.imooc-lego.com/ 。
 
 过程大概 3-5 分钟。
 
