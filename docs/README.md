@@ -17,6 +17,7 @@
 
 - [【郭二蛋】第二周笔记和作业](./pages/郭二蛋/02-第二周笔记和作业.md)
 - [【彩笔】脚手架架构设计和框架搭建](./pages/彩笔/作业-02-脚手架架构设计和框架搭建.md)
+- [【Berners】第二周笔记和作业](./pages/Berners/02-第二周笔记和作业.md)
 
 ## 查看其他同学的作业和笔记
 
@@ -60,7 +61,7 @@ npm run dev # 访问 localhost:4000
 
 - 从你 fork 的仓库，提交 pull request 到 https://github.com/imooc-lego/students-learn-task ，**请求合并到 `main` 分支**
 - 确定 https://github.com/imooc-lego/students-learn-task 有你提交的 pull request
-- 去课程群里通知管理员，管理员会合并 pull request （除非你提交了违规内容）
+- 等待讲师处理（一般会在 24h 之内处理：合并或者回复），注意看 github 的通知
 
 ## 自动发布
 
@@ -73,3 +74,4 @@ pull request 被合并之后，会触发 [github actions](https://github.com/imo
 - 第一次，记得新建 `docs/pages/<yourName>/README.md` 文件
 - 图片文件都放在 `docs/pages/<yourName>/images/` 目录中
 - 提交时记得删掉 `docs/SUMMARY.md` 文件，否则容易产生冲突
+- Pull request 提交成功之后，自己再检查一下：看是否有冲突？看 Files changed 是否符合预期？
