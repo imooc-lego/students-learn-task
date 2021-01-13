@@ -13,6 +13,31 @@
 - [【彩笔】架构方案设计文档](./pages/彩笔/作业-01-架构方案设计文档.md)
 - [【yhtx1997】第一周作业](./pages/yhtx1997/01-第一周作业.md)
 
+### week2 脚手架架构设计和框架搭建
+
+- [【郭二蛋】第二周笔记和作业](./pages/郭二蛋/02-第二周笔记和作业.md)
+- [【彩笔】脚手架架构设计和框架搭建](./pages/彩笔/作业-02-脚手架架构设计和框架搭建.md)
+- [【Berners】第二周笔记和作业](./pages/Berners/02-第二周笔记和作业.md)
+- [【い狂奔的蜗牛】01.Node.js中经典算法（一）](./pages/い狂奔的蜗牛/01.Node.js中经典算法（一）.md)
+- [【yhtx1997】02-第二周作业](./pages/yhtx1997/02-第二周作业.md)
+
+### week3 脚手架核心流程开发
+
+- [【郭二蛋】03-第三周学习笔记](./pages/郭二蛋/03-第三周学习笔记.md)
+- [【い狂奔的蜗牛】02.Node.js中使用ES Module的两种方式](./pages/い狂奔的蜗牛/02.Node.js中使用ES%20Module的两种方式.md)
+- [【彩笔】作业-03-脚手架核心流程开发](./pages/彩笔/作业-03-脚手架核心流程开发.md)
+
+### week4 脚手架命令注册和执行过程开发
+
+- [【彩笔】作业-04-脚手架命令注册和执行过程开发](./pages/彩笔/作业-04-脚手架命令注册和执行过程开发.md)
+- [【い狂奔的蜗牛】03.sim-cli核心图集](./pages/い狂奔的蜗牛/03.sim-cli核心图集.md)
+- [【い狂奔的蜗牛】04.Node.js多进程源码分析](./pages/い狂奔的蜗牛/04.Node.js多进程源码分析.md)
+
+### week5 脚手架创建项目流程设计和开发
+
+- [【い狂奔的蜗牛】08.第五周-类似inquirer列表类型交互实现](./pages/い狂奔的蜗牛/08.第五周-类似inquirer列表类型交互实现.md)
+
+
 ## 查看其他同学的作业和笔记
 
 页面左侧目录，就是所有同学的作业和学习笔记。
@@ -55,11 +80,11 @@ npm run dev # 访问 localhost:4000
 
 - 从你 fork 的仓库，提交 pull request 到 https://github.com/imooc-lego/students-learn-task ，**请求合并到 `main` 分支**
 - 确定 https://github.com/imooc-lego/students-learn-task 有你提交的 pull request
-- 去课程群里通知管理员，管理员会合并 pull request （除非你提交了违规内容）
+- 等待讲师处理（一般会在 24h 之内处理：合并或者回复），注意看 github 的通知
 
 ## 自动发布
 
-pull request 被合并之后，会触发 [github actions](https://github.com/imooc-lego/students-learn-task/actions) ，自动打包、发布到 https://imooc-lego.github.io 。
+pull request 被合并之后，会触发 [github actions](https://github.com/imooc-lego/students-learn-task/actions) ，自动打包、发布到 http://homework.imooc-lego.com/ 。
 
 过程大概 3-5 分钟。
 
@@ -68,3 +93,4 @@ pull request 被合并之后，会触发 [github actions](https://github.com/imo
 - 第一次，记得新建 `docs/pages/<yourName>/README.md` 文件
 - 图片文件都放在 `docs/pages/<yourName>/images/` 目录中
 - 提交时记得删掉 `docs/SUMMARY.md` 文件，否则容易产生冲突
+- Pull request 提交成功之后，自己再检查一下：看是否有冲突？看 Files changed 是否符合预期？
