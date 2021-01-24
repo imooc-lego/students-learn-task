@@ -11,3 +11,7 @@
 [基于lerna开发脚手架](04-Week02-基于lerna开发脚手架.md)
 [yargs使用](05-Week02-yargs使用.md)
 [lerna源码分析](06-Week02-lerna源码分析.md)
+
+## Week03 脚手架核心流程开发
+
+[Week03-作业](07-Week03-脚手架核心流程开发.md)
