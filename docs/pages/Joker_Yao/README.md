@@ -8,4 +8,4 @@
 
 # 慕课网 Web 前端架构师课程学习笔记
 
-![测试图片插入](./images/timg.jpeg)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/Joker_Yao/images/timg.jpeg)

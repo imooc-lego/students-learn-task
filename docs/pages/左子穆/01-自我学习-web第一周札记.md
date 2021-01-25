@@ -121,4 +121,4 @@ h5抽奖为例
 
 
 #### 网站技术方案流程图
-![流程图](./images/sw.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/%E5%B7%A6%E5%AD%90%E7%A9%86/images/sw.png)

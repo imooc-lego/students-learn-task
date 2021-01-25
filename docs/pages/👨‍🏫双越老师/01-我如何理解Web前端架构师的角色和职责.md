@@ -14,7 +14,7 @@
 
 下面，我根据我的工作经验和理解，说一下 Web 前端架构师这个角色的一些职责。虽然没法给出一个文字定义，但可以从不同的方面来表达一下。
 
-![](./images/role.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%E5%8F%8C%E8%B6%8A%E8%80%81%E5%B8%88/images/role.png)
 
 ## 负责人
 

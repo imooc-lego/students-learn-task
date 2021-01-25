@@ -17,6 +17,6 @@ Lerna是一个优化基于git+npm的多package项目的项目管理工具
 
 ## lerna开发脚手架流程
 
-![lerna-init](./images/lerna_init.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/apple/images/lerna_init.png)
 
 练级[https://github.com/lerna/lerna]

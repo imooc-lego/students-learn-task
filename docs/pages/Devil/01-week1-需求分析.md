@@ -8,11 +8,11 @@
 
 #### 产品分析
 
-![](./images/thumbnail.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/Devil/images/thumbnail.png)
 
 ## 架构设计
 
-![](./images/section3-main.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/Devil/images/section3-main.png)
 
 #### 数据结构示例
 

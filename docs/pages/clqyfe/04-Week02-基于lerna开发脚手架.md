@@ -120,7 +120,7 @@ lerna 是一个优化基于git+npm的多package项目的管理工具。
 
 ## lerna 开发脚手架流程（重点）
 
-![lerna 开发脚手架流程](images/02-2.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/clqyfe/images/02-2.png)
 
 基于 lerna 开发脚手架：
 

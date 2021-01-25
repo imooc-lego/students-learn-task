@@ -6,7 +6,7 @@
 
 最终，我们总结出了以下几点，证明我们这门课和实战课确实完全不一样。
 
-![](./images/different.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%E5%8F%8C%E8%B6%8A%E8%80%81%E5%B8%88/images/different.png)
 
 ## 真正的线上项目，不是 demo
 
