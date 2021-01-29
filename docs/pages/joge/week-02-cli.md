@@ -9,26 +9,33 @@
 
 ## 脚手架开发入门  
 ### 脚手架的必要性  
-- 开源项目  
-- 真实项目都会使用脚手架  
-
 - *提升研发效能*  
   - 创建项目和通用代码  
   - git操作（自动化）  
   - 构建和发布上线  
 
 - 价值
-  - 研发过程自动化 拷贝重复代码/git操作/发布上线  
-  - 研发过程标准化 创建项目/git flow/发布流程/回滚流程  
+  - 自动化 拷贝重复代码/git操作/发布上线  
+  - 标准化 创建项目/git flow/发布流程/回滚流程  
   - 数据化 使研发流程可量化  
 
 ### 脚手架到底是什么  
 - 从使用的角度  
   - 到底什么是脚手架  
-    本质是操作系统客户端  
-    (vue create xxxx --focus -r xxxx)  vue主命令 create子命令(command) xxxx(参数) --focus和-r叫option， 子命令向主命令发送请求  
+    本质是操作系统的客户端，通过命令执行  
+    ``` javascript  
+    vue create my-vue-object --force -r xxxx
+    ```  
+
+    主命令: vue  
+    command: create - 子命令 可以理解成发送一个请求  
+    command的param: my-vue-object - command的参数  
+    option: force  r - 选项 可以理解成配置  
+    option的param: xxxx  
   - 整体执行过程  
-    vue create <app-name> 终端到底是怎么执行的  
+    输入命令后 -> 解析出命令所在的真实的位置 -> 执行真实的文件（文件顶部获取环境变量中的node）-> 通过node执行文件 -> 文件再解析命令 执行相关操作 -> 执行完毕退出
+
+    以vue create <app-name> 为例子  
     - 终端会从环境变量中找到vue然后解析出vue.js  
     - vue.js解析command options  
     - vue.js执行command  
@@ -40,7 +47,12 @@
     - 在node/bin目录下配置软连接连接到lib/node_modules/@vue/cli/bin/vue.js  
 
   - 疑问  
-
+    - 如何自动添加命令  
+      通过package.json里的bin字段进行设置  
+    - 全局安装脚手架时发生了什么  
+      安装依赖 -> 设置软连接（bin）  
+    - 执行命令为什么不用输入node就可以执行  
+      js文件的顶部设置了通过环境变量里的node来执行  
 ### 实现原理  
 - 依赖node  
 - 和操作系统有关 - 环境变量 root账户  
