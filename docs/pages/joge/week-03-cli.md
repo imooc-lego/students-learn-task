@@ -41,3 +41,45 @@
 ![第三版图](./images/week3-3.png "第三版图")  
 通过这个对结构有了大体上认识，也能理解实际项目里用的脚手架大概为了解决什么样的工作  
 *比如: 我这通过脚手架来创建项目 通过配置git仓库是为了告诉脚手架从哪读取代码，对应这里的git操作体系，还有隐藏在背后的打包发布流程*  
+
+# 基础的流程  
+- 检查版本号
+  获取package.json里的版本号
+  - reqiure加载资源的方式 - .js/.json/.node 其他的格式类型的文件默认以JS文件来解析  
+  - npmlog  
+    - 添加自定义事件  
+    - 判断debug模式(semver和commander两种方式)  
+    - 添加自定义前缀  
+- 最低node版本要求
+  - 获取当前版本号: process.version
+  - 比对版本号
+    samver - 各种各样的版本号比对
+
+- root账号启动检查和自动降级功能  
+  root-check  
+
+- 用户主目录检查功能  
+  user-home  
+  path-exists  
+
+- 入参检查和debug模式  
+  minimist - 参数解析  
+  这里解析为了设置log的等级 是否需要打印debug  
+
+- 环境变量检查功能  
+  将用户名密码等敏感信息保存在本地  
+
+- npm API  
+  - 获取当前版本号  
+  - 调用npm api获取所有版本号  
+  - 比对版本号  
+    url join  
+
+- npm全局更新功能  
+- 注册命令  
+  commander  
+  - commander怎么用  
+  - commander全局注册  
+
+*commander搭建脚手架正在公司自己的包管理系统上学着发布*
+*node端处理ESmodule github上有了哈*
