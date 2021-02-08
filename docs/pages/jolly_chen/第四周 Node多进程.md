@@ -133,7 +133,7 @@ const cp = require('child_process');
     console.log('stderr: ', chunk.toString());
   });
   child.on('error', e => { // 监听错误
-  	
+    process.exit(1);
   });
   child.on('exit', e => {// 监听执行成功后的退出事件
   
