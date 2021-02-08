@@ -4,6 +4,10 @@ Node多进程核心是创建一个子进程，子进程依附在当前Node进程
 
 核心类是 `child_process` 
 
+### 文档路径
+
+http://nodejs.cn/api/child_process.html
+
 ### 子进程概念
 
 是系统进行资源分配和调度的基本单位，是操作系统结构的基础
@@ -128,7 +132,19 @@ const cp = require('child_process');
   child.stderr.on('data', function(chunk) {
     console.log('stderr: ', chunk.toString());
   });
+  child.on('error', e => { // 监听错误
+  	
+  });
+  child.on('exit', e => {// 监听执行成功后的退出事件
+  
+  });
   ```
+
+  option参数
+
+  - `stdio` 选项用于配置在父进程和子进程之间建立的管道。值：
+    - `pipe` 默认值，在子进程和父进程之间创建一个管道。
+    - `inherit` 将相应的 stdio 流传给父进程或从父进程传入。将输入、输出、错误，绑定到父进程的 `process.stdin`、 `process.stdout` 和 `process.stderr` 上。**直接能看到打印**，还带动画（进度）信息 。
 
 - `fork` 使用 `node` 执行命令
 
@@ -196,4 +212,33 @@ msg:  hello main process
 ```
 
 **注意：子进程向主进程发送消息，容易造成死循环**
+
+#### 异步
+
+执行简单 `shell` 命令
+
+- `execSync` 执行 `shell` 命令
+
+  ```javascript
+  const ret = cp.execSync('ls -la|grep node_modules');
+  console.log(ret.toString()); // ret 是个 buffer
+  ```
+
+- `execFileSync` 执行 `shell` 文件
+
+  ```javascript
+  const ret = cp.execFileSync('ls', ['-la']);
+  console.log(ret.toString()); // ret 是个 buffer
+  ```
+
+- `spawnSync` 执行 `shell` 文件
+
+  ```javascript
+  const ret = cp.spawnSync('ls', ['-la']);
+  console.log(ret.stdout.toString()); // ret 是个 buffer
+  ```
+
+  
+
+  
 
