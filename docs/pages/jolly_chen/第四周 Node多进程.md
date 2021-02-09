@@ -240,5 +240,11 @@ msg:  hello main process
 
   
 
-  
+#### windows 子进程执行 `node` 命令
+
+```javascript
+cp.spawn('cmd', ['/c', 'node', '-e', code]); // '/c' 表示静默执行
+```
+
+
 
