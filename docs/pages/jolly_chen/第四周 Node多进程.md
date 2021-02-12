@@ -144,6 +144,7 @@ const cp = require('child_process');
 
   - `stdio` 选项用于配置在父进程和子进程之间建立的管道。值：
     - `pipe` 默认值，在子进程和父进程之间创建一个管道。
+    - `ignore` 静默执行，不会收到反馈
     - `inherit` 将相应的 stdio 流传给父进程或从父进程传入。将输入、输出、错误，绑定到父进程的 `process.stdin`、 `process.stdout` 和 `process.stderr` 上。**直接能看到打印**，还带动画（进度）信息 。
 
 - `fork` 使用 `node` 执行命令
