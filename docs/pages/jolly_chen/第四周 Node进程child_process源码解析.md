@@ -172,7 +172,7 @@
   a === b; // false
   ```
 
-- `spawn` 中的命令执行部分
+- `spawn` 中的命令拼接部分
 
   ```javascript
   if (options.shell) {
@@ -316,6 +316,12 @@ stdout close
 
 - 黄色：回调执行过程
 - 紫色：广播事件
+- 绿色：进程 `error` 流程
+
+关于 `stderr` 
+
+- 当命令执行失败，如 `lss -ls` 时
+  - `ChildProcess.prototype.spawn()` 中 **`exitCode` 是 0**，并不小于0
 
 ### `fork` 源码解读
 
@@ -326,6 +332,20 @@ stdout close
     - `new Control(channel)` 创建 `control` 对象，用于建立 `ipc` 通信
     - 有数据读写时，进入 `channel.onread`
 - `child.send()` 调用 `target.send()` 进行进程通信， 使用 `pipe ` 进行数据传递
+
+### Node 多进程源码总结
+
+- exec/execFile/spawn/fork的区别
+  - `exec` : 原理是调用 `bin/shell -c` 执行我们传入的 `shell` 脚本，调用 `execFile`，但传参做了处理
+  - `execFile`：原理是直接执行我们传入的 `file` 和 `args`，底层调用 `spawn` 创建和执行子进程，但通过监听 `spawn ` 中广播的事件，建立了回调，且一次性将所有的 `stdout` 和 `stderr` 结果返回
+  - `spawn`：原理是调用 `internal/child_process`，实例化了 `ChildProcess` 子进程对象，再调用 `ChildProcess.prototype.spawn()` 创建子进程并执行命令，底层调用了 `child._handle.spawn()` 执行 `C++ process_wrap` 中的 `spawn` 方法。执行过程是异步的。执行完后，通过 pipe 进行单向数据通信，通信结束后，子进程发起 `child._handle.onexit` 回调，同时 socket 会执行 `close` 回调。
+  - `fork`：原理是通过 `spawn` 创建子进程和执行命令。使用 `node` 执行命令，通过 `setupchannel` 创建 `IPC` 用于子进程和父进程之间的双向通信
+- data/error/exit/close回调的区别
+  - `data`：主进程读取数据过程中，通过 `onStreamRead` 发起回调
+  - `error`：命令执行失败后发起的回调
+  - `exit`：子进程关闭完成后发起的回调
+  - `close`：子进程所有 `Socket` 通信端口全部关闭后发起的回调
+  - `stdout close`/`stderr close`：特定的 PIPE 读取完成后调用 `onReadableStreamEnd()` 关闭 `Socket` 时发起的回调。
 
 
 
