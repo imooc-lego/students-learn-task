@@ -45,7 +45,7 @@
 
 - #### 需求总结
 
-  ![需求总结](/Users/zxxiaoxiao/Desktop/OpenSource/webqianduan/students-learn-task/docs/pages/filway/images/需求总结.png)
+  ![需求总结](./images/需求总结.png)
 
 ## 范围
 
@@ -64,7 +64,7 @@
 
 ## 模块设计
 
-![模块设计](/Users/zxxiaoxiao/Desktop/OpenSource/webqianduan/students-learn-task/docs/pages/filway/images/模块设计.png)
+![模块设计](./images/模块设计.png)
 
 - 组件库，独立第三方，同时用于编辑器和H5，实现所见即所得，UI一致性
 - 统计服务自研，因为第三方服务（如百度）只能统计基本的pv/uv，自定义统计，参数级别的统计要么没有要么收费，综合考虑还是自研比较好，还能加入日志统计，日志分析
@@ -127,7 +127,7 @@
 
 - #### 数据流转关系图
 
-  ![数据流转](/Users/zxxiaoxiao/Desktop/OpenSource/webqianduan/students-learn-task/docs/pages/filway/images/数据流转.png)
+  ![数据流转](./images/数据流转.png)
 
 ## 扩展性保证
 
