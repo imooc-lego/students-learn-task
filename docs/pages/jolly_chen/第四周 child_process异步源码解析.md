@@ -323,15 +323,36 @@ stdout close
 - 当命令执行失败，如 `lss -ls` 时
   - `ChildProcess.prototype.spawn()` 中 **`exitCode` 是 0**，并不小于0
 
+### `Buffer` 对象的字符串解码器
+
+在 `fork` 流程，`setupChannel(child, ipc)` 设置，其中涉及 `Buffer` 对象的字符串解码。
+
+`string_decoder` 模块提供了一个 API，用一种能保护已编码的多字节 UTF-8 和 UTF-16 字符的方式将 `Buffer` 对象解码为字符串。基本用法
+
+```javascript
+const { StringDecoder } = require('string_decoder');
+const decoder = new StringDecoder('utf8');
+
+const cent = Buffer.from([0xC2, 0xA2]);
+console.log(decoder.write(cent));
+
+const euro = Buffer.from([0xE2, 0x82, 0xAC]);
+console.log(decoder.write(euro));
+```
+
 ### `fork` 源码解读
 
+![fork执行脑图](./images/fork脑图.png)
+
+- 剩余部分见 `exec` 执行脑图
 - stdio `ipc` 通信：`[0, 1, 2, 'ipc']`
 - `process.execPath` 拿到 `node` 路径
 - 重点 `getValidStdio(stdio, false)`
-  - 执行`setupChannel(this, ipc)`，创建 socket 通信，在父、子进程之间启动 `ipc` 
-    - `new Control(channel)` 创建 `control` 对象，用于建立 `ipc` 通信
-    - 有数据读写时，进入 `channel.onread`
+  - 执行`setupChannel(this, ipc)`，增强 `ipc` 功能，在父、子进程之间启动 `ipc`：`channel.readStart()`
+    - `new Control(channel)` 创建 `control` 对象，用于执行 `ipc` 的`ref` 和 `unref` 方法
+    - 有数据读取时，进入 `channel.onread` 
 - `child.send()` 调用 `target.send()` 进行进程通信， 使用 `pipe ` 进行数据传递
+- 在执行的 `js` 文件中，`process.send()` 也是使用 `target.send()` 进行通信
 
 ### Node 多进程源码总结
 

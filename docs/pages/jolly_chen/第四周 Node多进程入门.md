@@ -214,22 +214,22 @@ msg:  hello main process
 
 **注意：子进程向主进程发送消息，容易造成死循环**
 
-#### 异步
+#### 同步
 
 执行简单 `shell` 命令
 
 - `execSync` 执行 `shell` 命令
 
   ```javascript
-  const ret = cp.execSync('ls -la|grep node_modules');
-  console.log(ret.toString()); // ret 是个 buffer
+  const stdout = cp.execSync('ls -la|grep node_modules');
+  console.log(stdout.toString()); // stdout 是个 buffer
   ```
 
 - `execFileSync` 执行 `shell` 文件
 
   ```javascript
-  const ret = cp.execFileSync('ls', ['-la']);
-  console.log(ret.toString()); // ret 是个 buffer
+  const stdout = cp.execFileSync('ls', ['-la']);
+  console.log(stdout.toString()); // stdout 是个 buffer
   ```
 
 - `spawnSync` 执行 `shell` 文件
