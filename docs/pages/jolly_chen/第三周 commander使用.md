@@ -65,7 +65,7 @@ program
     .description('start service at some port')
     .action(port => {
       console.log('do service start', port);
-    });
+    }); // 回调函数接收的参数：第一个到第n个是命令的参数，n+1位是option，最后是command命令本身
   program.addCommand(service);
   ```
 
