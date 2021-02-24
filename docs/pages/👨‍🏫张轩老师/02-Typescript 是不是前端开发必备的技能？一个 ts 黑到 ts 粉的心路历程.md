@@ -2,11 +2,11 @@
 
 2020年 Typescript 各种火，就像我之前说的在 jsconf 2019上，typescript 也变成了一个主要议题，占到了很大比重，来自微软的讲师韩骏还拿出了这么一张图，来表达自己的观点，
 
-![](./images/typescript-poster.jpg)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%E5%BC%A0%E8%BD%A9%E8%80%81%E5%B8%88/images/typescript-poster.jpg)
 
 我觉得这个不是夸大其词，而实实在在的是一个趋势，来自 2018 年 stateofjs 权威调查显示，80% 的程序员都希望在新的项目中学习和使用 typescript。大家可以明显看到从 2016 年到 2018年 这个趋势的绝大变化，这就说明 typescript 越来越流行了。
 
-![](./images/typescript-change.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%E5%BC%A0%E8%BD%A9%E8%80%81%E5%B8%88/images/typescript-change.png)
 
 在我的编程生涯到现在，我一直在使用动态类型语言（Dynamically Typed Language），聊起这个概念，那就要说说 动态类型语言 和他的对立面 - 静态类型语言（Statically Typed Language）。我刚写 typescript 的时候，对类型声明嗤之以鼻，添加一大堆类型浪费我宝贵的时间，还时不时遇到根本看不懂的类型错误，感觉很抓狂，我当时想对 ts 编译器说：“老子能管好自己写的类型，不用你报错”，实在搞不定的类型错误发生的时候，我就会使用 any 大法，完全是一副应付差事的用法。
 
@@ -19,19 +19,19 @@
 当我们进行编码的时时候，我们非常关心这几个问题，一个函数或者方法接受什么样什么类型的参数，它的返回值和类型是什么？有什么其他外部数据需要被引进？为了解决这几个问题，我们一般都要详细的查阅文档，搞清楚所有的来龙去脉，因为动态语言的约束我们很难完成这几项任务，我们需要在代码真正运行的时候来调试才能知道答案，比如说加断点或者 console.log 去查看输出，甚至还需要社交过程，我有好几次都是直接跑去问同事或者blame原来写这段代码的人，发个邮件问这些代码究竟是干嘛的，扯皮扯个好几天。有了 typescript，这几个问题都迎刃而解，代码就是全部的注释，通过代码你不再需要去进行猜测，而是直接就可以知道这些问题的答案。看下面上古神器 jQuery 的提示，这参数，返回值的说明，还有文档地址和代码示例，这水平比你百度出来不知几百年前的csdn博客文章不知道高到哪里去了。
 
 
-![](./images/jquery_hint.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%E5%BC%A0%E8%BD%A9%E8%80%81%E5%B8%88/images/jquery_hint.png)
 
 2 效率更高
 
 有了 IDE 和 compiler 的帮助，你可以非常方便的在不同的代码块和定义之间进行跳转，同时进行代码补全，还有丰富的接口提示，可以是事半功倍。我就享受这个感觉，能让 IDE 炫酷的提示是每个程序员的梦想。可以疯狂的体验下“老夫就是 jQuery 一把梭”的快感。
 
-![](./images/jquery.gif)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%E5%BC%A0%E8%BD%A9%E8%80%81%E5%B8%88/images/jquery.gif)
 
 3 更少的错误
 
 在编译期间能够发现大部分的错误，这远远要比运行时候再出现这些错误要好的多。在 typescript 之前，我不知道有多少次出现变量名称打错这种错误，传入错误类型的参数，还有就是还有就是排在前端错误第一名：最经典的“Cannot read property 'xxx' on undefined：无法在 undefined 上读取 xxx 属性，通常出现在 a.b.c 的情况。”
 
-![](./images/jquery_error.png)
+![](http://imooc-lego-homework.oss-cn-hangzhou.aliyuncs.com/docs/pages/%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%E5%BC%A0%E8%BD%A9%E8%80%81%E5%B8%88/images/jquery_error.png)
 
 4 非常好的包容性
 
