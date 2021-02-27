@@ -2,105 +2,105 @@
 ![图片描述](http://img.mukewang.com/climg/60360d9a09d1d62a22711401.jpg)
 
 **ImageProcesser.vue组件**
-```javascript
+```html
 <template>
-  <div class="image-processer">
-    <div class="image-preview" :style="{backgroundImage: `url('${value}')`}"/>
-    <div class="image-process">
-      <uploader
-        class="uploader"
-        action="http://123.57.138.48/api/upload/"
-        :showUploadList="false"
-        :beforeUpload="commonUploadCheck"
-        @success="(data) => {handleUploadSuccess(data.resp, data.file.raw)}"
-      >
-        <div class="uploader-container">
-          <a-button shape="round">
-            <template #icon>
-              <UploadOutlined/>
-            </template>
-            更换图片
-          </a-button>
-        </div>
-        <template #loading>
-          <div class="uploader-container">
-            <a-button shape="round">
-              <template #icon>
-                <LoadingOutlined/>
-              </template>
-              上传中
-            </a-button>
-          </div>
-        </template>
-        <template #uploaded>
-          <div class="uploader-container">
-            <a-button shape="round">
-              <template #icon>
-                <UploadOutlined/>
-              </template>
-              更换图片
-            </a-button>
-          </div>
-        </template>
-      </uploader>
-    </div>
-  </div>
+	<div class="image-processer">
+		<div class="image-preview" :style="{backgroundImage: `url('${value}')`}"/>
+	<div class="image-process">
+		<uploader
+			class="uploader"
+			action="http://123.57.138.48/api/upload/"
+		:showUploadList="false"
+		:beforeUpload="commonUploadCheck"
+		@success="(data) => {handleUploadSuccess(data.resp, data.file.raw)}"
+	>
+		<div class="uploader-container">
+			<a-button shape="round">
+				<template #icon>
+				<UploadOutlined/>
+</template>
+更换图片
+</a-button>
+</div>
+<template #loading>
+<div class="uploader-container">
+	<a-button shape="round">
+		<template #icon>
+		<LoadingOutlined/>
+	</template>
+	上传中
+</a-button>
+</div>
+</template>
+<template #uploaded>
+<div class="uploader-container">
+	<a-button shape="round">
+		<template #icon>
+		<UploadOutlined/>
+	</template>
+	更换图片
+</a-button>
+</div>
+</template>
+</uploader>
+</div>
+</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import Uploader from './Uploader.vue';
-import { commonUploadCheck } from '../helper';
-import { UploadOutlined, LoadingOutlined } from '@ant-design/icons-vue';
-import { UploadResp } from '../../types/UploadResp';
+	import { defineComponent, PropType } from 'vue';
+	import Uploader from './Uploader.vue';
+	import { commonUploadCheck } from '../helper';
+	import { UploadOutlined, LoadingOutlined } from '@ant-design/icons-vue';
+	import { UploadResp } from '../../types/UploadResp';
 
-export default defineComponent({
-  name: 'ImageProcesser',
-  components: {
-    Uploader,
-    UploadOutlined,
-    LoadingOutlined
-  },
-  props: {
-    value: {
-      type: String as PropType<string>,
-      required: true
-    }
-  },
-  emits: ['change'],
-  setup(props, {emit}) {
-    const handleUploadSuccess = (resp: UploadResp, file: File) => {
-      emit('change', resp.data.url);
-    };
-    return {
-      commonUploadCheck,
-      handleUploadSuccess
-    };
-  }
+	export default defineComponent({
+	name: 'ImageProcesser',
+	components: {
+	Uploader,
+	UploadOutlined,
+	LoadingOutlined
+},
+	props: {
+	value: {
+	type: String as PropType<string>,
+	required: true
+}
+},
+	emits: ['change'],
+	setup(props, {emit}) {
+	const handleUploadSuccess = (resp: UploadResp, file: File) => {
+	emit('change', resp.data.url);
+};
+	return {
+	commonUploadCheck,
+	handleUploadSuccess
+};
+}
 });
 </script>
 
 <style lang="scss" scoped>
-.image-processer {
-  padding: 10px 0;
-  display: flex;
-  box-sizing: border-box;
+	.image-processer {
+	padding: 10px 0;
+	display: flex;
+	box-sizing: border-box;
 
-  .image-preview {
-    flex: 0 0 150px;
-    width: 150px;
-    height: 84px;
-    border: 1px dashed #e6ebed;
-    background: no-repeat 50%/contain;
-  }
+	.image-preview {
+	flex: 0 0 150px;
+	width: 150px;
+	height: 84px;
+	border: 1px dashed #e6ebed;
+	background: no-repeat 50%/contain;
+}
 
-  .image-process {
-    padding: 5px 0;
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+	.image-process {
+	padding: 5px 0;
+	margin-left: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
 }
 </style>
 
@@ -197,5 +197,235 @@ describe('ImageProcesser', () => {
     }
   ```
 
-**效果图**
-![图片描述](http://img.mukewang.com/climg/603602fa09e366b833461734.jpg)
+### 重构StyledUploader与ImageProcesser
+
+> 由于模板部分StyledUploader与属性部分的StyledUploader样式不一致,故定义如下属性以便针对两边进行适配。
+
+```html
+// props属性类型定义
+type ButtonType = 'primary' | 'default' | 'dashed' | 'danger' | 'link';
+type Shape = 'circle' | 'round' | 'default'
+type Titles = string[];
+type Icon = 'FileImageOutlined' | 'UploadOutlined';
+// 属性声明
+props: {
+    type: {
+      type: String as PropType<ButtonType>,
+      default: 'primary'
+    },
+    shape: {
+      type: String as PropType<Shape>,
+      default: 'default'
+    },
+    titles: {
+      type: Array as PropType<Titles>,
+      default() {
+        return ['上传图片', '上传中...', '上传图片'];
+      }
+    },
+    fixedWidth: {
+      type: [String, Number],
+      default: '110px'
+    },
+    icon: {
+      type: String as PropType<Icon>,
+      default: 'FileImageOutlined'
+    }
+  }
+```
+
+**完整实现**
+
+```html
+<template>
+  <uploader
+    class="styled-uploader"
+    action="http://123.57.138.48/api/upload/"
+    :showUploadList="false"
+    :beforeUpload="commonUploadCheck"
+    @success="(data) => {handleUploadSuccess(data.resp, data.file.raw)}"
+  >
+    <div class="uploader-container">
+      <a-button
+        :type="type"
+        :shape="shape"
+        :style="{width: fixedWidth}"
+      >
+        <template #icon>
+          <component
+            :is="icon"
+          />
+        </template>
+        {{ titles[0] }}
+      </a-button>
+    </div>
+    <template #loading>
+      <div class="uploader-container">
+        <a-button
+          :type="type"
+          :shape="shape"
+          :style="{width: fixedWidth}"
+        >
+          <template #icon>
+            <LoadingOutlined spin/>
+          </template>
+          {{ titles[1] }}
+        </a-button>
+      </div>
+    </template>
+    <template #uploaded>
+      <div class="uploader-container">
+        <a-button
+          :type="type"
+          :shape="shape"
+          :style="{width: fixedWidth}"
+        >
+          <template #icon>
+            <component
+              :is="icon"
+            />
+          </template>
+          {{ titles[2] }}
+        </a-button>
+      </div>
+    </template>
+  </uploader>
+</template>
+
+<script lang="ts">
+import { defineComponent, PropType, computed } from 'vue';
+import { FileImageOutlined, LoadingOutlined, UploadOutlined } from '@ant-design/icons-vue';
+import { commonUploadCheck } from '../helper';
+import Uploader from './Uploader.vue';
+
+type ButtonType = 'primary' | 'default' | 'dashed' | 'danger' | 'link';
+type Shape = 'circle' | 'round' | 'default'
+type Titles = string[];
+type Icon = 'FileImageOutlined' | 'UploadOutlined';
+export default defineComponent({
+  props: {
+    type: {
+      type: String as PropType<ButtonType>,
+      default: 'primary'
+    },
+    shape: {
+      type: String as PropType<Shape>,
+      default: 'default'
+    },
+    titles: {
+      type: Array as PropType<Titles>,
+      default() {
+        return ['上传图片', '上传中...', '上传图片'];
+      }
+    },
+    fixedWidth: {
+      type: [String, Number],
+      default: '110px'
+    },
+    icon: {
+      type: String as PropType<Icon>,
+      default: 'FileImageOutlined'
+    }
+  },
+  components: {
+    Uploader,
+    FileImageOutlined,
+    LoadingOutlined,
+    UploadOutlined
+  },
+  emits: ['success'],
+  setup(props, {emit}) {
+    const handleUploadSuccess = (resp: any, file: File) => {
+      emit('success', {resp, file});
+    };
+    return {
+      commonUploadCheck,
+      handleUploadSuccess
+    };
+  }
+});
+</script>
+
+```
+
+**重构ImageProcesser**
+
+```html
+<template>
+  <div class="image-processer">
+    <div class="image-preview" :style="{backgroundImage: `url('${value}')`}"/>
+    <div class="image-process">
+      <styled-uploader
+        shape="round"
+        icon="UploadOutlined"
+        type="default"
+        fixed-width="100%"
+        :titles="titles"
+        @success="onImageUploaded"
+      />
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, PropType, ref } from 'vue';
+import { UploadResp } from '../../types/UploadResp';
+import StyledUploader from '@/components/StyledUploader.vue';
+
+export default defineComponent({
+  name: 'ImageProcesser',
+  components: {
+    StyledUploader
+  },
+  props: {
+    value: {
+      type: String as PropType<string>,
+      required: true
+    }
+  },
+  emits: ['change'],
+  setup(props, {emit}) {
+    const titles = ref(['更换图片', '上传中...', '更换图片']);
+    const onImageUploaded = async (res: { [key: string]: UploadResp | File }) => {
+      const resp = res.resp as UploadResp;
+      emit('change', resp.data.url);
+    };
+    return {
+      titles,
+      onImageUploaded
+    };
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+.image-processer {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  box-sizing: border-box;
+
+  .image-preview {
+    flex: 0 0 150px;
+    width: 150px;
+    height: 84px;
+    border: 1px dashed #e6ebed;
+    background: no-repeat 50%/contain;
+  }
+
+  .image-process {
+    flex: 1;
+    padding: 5px 0;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+</style>
+
+```
+
+**最终效果**
+
+![图片描述](http://img.mukewang.com/climg/60370d2b0a40f7d616650841.jpg)
