@@ -28,7 +28,7 @@ npm link editor项目所在目录/node_modules/vue
 ```
 <br/>
 
-# Travis CI/CI踩坑记
+# Travis CI/CD踩坑记
 
 ## 踩坑一
 
