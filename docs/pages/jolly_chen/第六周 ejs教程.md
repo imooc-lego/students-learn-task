@@ -72,7 +72,7 @@ templatePromise:  <div>Tom</div>
 
 - `<% _%>` 删除其后面的空格。注意要有一个空格
 
-- `<%- %>` 输出非转义的数据到模板。场景一：直接输出html代码到模板
+- `<%- %>` 输出非转义的数据到模板。场景一：直接输出html代码<、>等特殊字符到模板
 
 - `<%= %>` 输出数据到模板
 
@@ -114,5 +114,111 @@ let myFileLoader = function (filePath) {
 ejs.fileLoader = myFileLoad; // 通过 myFileLoader 去加载文件
 ```
 
+## `ejs` 源码
 
+### `ejs` 执行流程
+
+`ejs.render` 和 `ejs.renderFile` 最后都是调用 `ejs.compile` 方法。
+
+``ejs.compile` 函数执行流程
+
+![](./images/ejs执行流程.png)
+
+<img src="./images/ejs.compile执行脑图.png" alt="执行脑图" style="zoom:50%;" />
+
+- `(new Function('return (async function(){}).constructor;'))()` 获得 `async funtion(){}` 的构造器
+
+当编译模板是
+
+```ejs
+'<div><%=name%></div>'
+```
+
+```js
+const template = ejs.compile(html, options); // 可以反复利用，多次渲染时，效率较高
+let compileTemplate = template(data);
+```
+
+此时 `template` 最终执行的是**存在内存中的匿名函数**
+
+```js
+(function anonymous(locals, escapeFn, include, rethrow
+) {
+var __line = 1
+  , __lines = "<div><%=name%></div>"
+  , __filename = undefined;
+try {
+  var __output = "";
+  function __append(s) { if (s !== undefined && s !== null) __output += s }
+  with (locals || {}) {
+    ; __append("<div>")
+    ; __append(escapeFn(name))
+    ; __append(escapeFn(name))
+    ; __append("</div>")
+  }
+  return __output;
+} catch (e) {
+  rethrow(e, __lines, __filename, __line, escapeFn);
+}
+
+})
+```
+
+- `template = returnedFn(data)`
+
+- `locals` 为 `data`
+
+- `escapeFn` 是处理特殊字符的函数，默认处理的是 `&<>'"` 五个字符，
+
+  ```js
+  {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&#34;',
+    "'": '&#39;'
+  };
+  ```
+
+  - 该函数，通过 `opts.escape || opts.escapeFunction` 指定
+
+- `include` 模板文件中有 `include` 引入了其他 `ejs` 模板时调用。此时，`with` 中会多出一行 `; __append( include(path, data) )` 
+
+- `rethrow` 错误信息处理函数
+
+### `ejs.render` 
+
+- 将 `options` 中的 `delimiter`, `scope`, `context`, `debug`, `compileDebug`, `client`, `_with`, `rmWhitespace`, `strict`, `filename`, `async` 配置，写到 `data` 中，(此时要)省的 `options` 也是可以的
+
+- `cache` 即 `exports.cache`，在 `option.cache` 设置为 `true` 时，将作为键值缓存 `ejs.compile` 得到的函数，键名为文件名
+
+### `ejs.renderFile`
+
+### 知识点
+
+- 使用 `new Function()` 创建匿名函数
+
+  ```js
+  let func = new Function ([arg1, arg2, ...argN], functionBody);
+  let func = new Function ('arg1, arg2, ...argN', functionBody);
+  let func = new Function ('arg1', arg2', '...' , 'argN', functionBody);
+  ```
+
+  前面是匿名函数形参，最后一个参数是匿名函数体，都是字符串
+
+- `ejs.renderFile` 源码中用到了 `Array.prototype.slice.call(arguments)` 将类数组对象 `arguments` 转换成数组
+
+  ```js
+  var a = [1,2];
+  var b = a.slice(); // [1, 2]
+  b === a // false
+  ```
+
+#### 获取宿主对象
+
+```js
+(new Function('return this;'))()
+```
+
+以上代码返回当前 `js`  执行环境的宿主对象：`window` / `global`
 
