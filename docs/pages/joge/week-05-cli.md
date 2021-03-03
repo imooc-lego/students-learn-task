@@ -8,11 +8,16 @@
 3. 项目类型是否为组件  
 ![准备阶段](./images/week5-1.png "准备阶段")  
 
-# 学习过程中遇到的问题  
-### 获取命令参数的问题  
-```javascript  
-    // 老师通过this._cmd.force拿到信息
-    this.force = !!this._cmd.force
-    // 我的版本需要_cmd[1]
-    this.force = !!this._cmd[1].force
-```  
+## mongodb  
+花了点时间弄了下数据库 可以访问了～  
+[http://www.curlyhair.cn:7001/project](http://www.curlyhair.cn:7001/project)  
+后来不小心删了库，觉得备份还是很重要啊  
+弄的时候在系统和版本之间遇到一些问题，启动的时候也遇到一些问题～ 都是百度解决的～  
+所以希望老师能讲讲基础的一些部署和规范的mongodb的操作  
+启动遇到问题应该是mongodb操作的时候不当  
+
+## 命令行交互  
+又觉得事件监听和异步是前端的灵魂！！！  
+源码跟着老师通看了一遍  
+加上前面的一些源码～ 要加油才能完全看懂了～  
+  
