@@ -43,12 +43,6 @@ for (let i = 0; i < moduleIds.length; ++i) {
 - `moduleIds`：内置模块的路径+文件ming。通过 `C++` 代码拿到
 - `this.canBeRequiredByUsers`：是否是内置模块，`moduleIds` 中，`internal/` 文件夹下都是内置模块
 
-#### 执行流程
-
-![require加载内置模块](./images/require加载内置模块.png)
-
-- 蓝色表示对应的模块
-
 ### `cluster` 执行流程
 
 ![cluster执行脑图](./images/cluster脑图.png)
