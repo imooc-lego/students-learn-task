@@ -31,10 +31,8 @@ rl.question('your name: ', (answer => {
 
   ```js
   EventEmitter.call(this);
-  
-  
   ```
-
+  
 - 监听键盘事件
 
   ```js
@@ -47,7 +45,7 @@ rl.question('your name: ', (answer => {
 
 #### `readline` 核心实现原理
 
-![readline核心实现原理.png](/Users/jolly/Desktop/imooc/students-learn-task/docs/pages/jolly_chen/images/readline 核心实现原理.png)
+![readline核心实现原理.png](./images/readline 核心实现原理.png)
 
 - 核心 `emitKeypressEvents(input, this)`，监听终端中的键盘输入
   - `emitKeys()` 是一个 `Generator` 函数 
@@ -56,7 +54,7 @@ rl.question('your name: ', (answer => {
 - 用户在命令行中输入，`_stream_readable.js` 中 `addChunk()` 函数派发事件 `stream.emit('data', chunk);`
 - `this.input.pause()` 将输入流关闭
 
-![readline核心实现原理脑图.png](/Users/jolly/Desktop/imooc/students-learn-task/docs/pages/jolly_chen/images/readline脑图.png)
+![readline核心实现原理脑图.png](./images/readline脑图.png)
 
 #### 知识点
 
