@@ -149,11 +149,18 @@ export userClick(props)
 不包括其他功能：预览、保存、发布等
 
 - 左侧组件模版库
+
+  预设各种组件模板并进行添加
+
 - 中间画布
+
+  使用交互式的手段更新元素属性
 
 - 右侧表单设置页面
 
-### 整体状态设计
+  使用表单更新元素属性
+
+### 添加模板组件到画布
 
 <img src="./images/整体状态设计.png" style="zoom:50%;" />
 
@@ -161,16 +168,41 @@ export userClick(props)
 
 ### 伪代码诠释实现流程
 
-
-
-```js
-[
+```typescript
+// 以下代码以后都可能修改
+export interface EditorStore {
+  components: ComponentData[]
+  // 其他状态相关信  // 其他状态相关信关息
+  currentElement: string // uuid
+  // ...
+}
+interface ComponentData {
+  props: { [key: string]: any };
+  id: string;
+  name: string
+}
+const components = [
   {id:'1', type: 'l-text', props: {text: 'hello', color: 'green'}},
   {id:'2', type: 'l-text', props: {text: 'world', color: 'purple'}}
 ]
+components.map(component => <component.name {...props} />);
+
+// 左侧模板
+const templateComponents = [
+  {id:'1', type: 'l-text', props: {text: '模板一', color: 'green'}},
+  {id:'2', type: 'l-text', props: {text: '模板二', color: 'purple'}}
+]
+templateComponents.map(component => <Wrapper onclick="clickFun"><component.name {...props} /></Wrapper>);
+
+// 添加组件
+components.push({id:'3', type: 'l-text', props: {text: '!', color: 'red'}})
+// 删除组件
+components.filter(component => component.id !== delId);
 ```
 
+### 组件属性和表单的关系
 
+<img src="./images/编辑器store与表单.png" alt="编辑器store与表单" style="zoom:50%;" />
 
 ## 老师用到的工具
 
