@@ -204,6 +204,132 @@ components.filter(component => component.id !== delId);
 
 <img src="./images/编辑器store与表单.png" alt="编辑器store与表单" style="zoom:50%;" />
 
+## 技术选型
+
+首先要确定最上层使用什么 ，才能根据上层确定下层适配的技术
+
+### Typescript
+
+使用 `Typescript` 开发大型项目
+
+- 程序更容易理解
+- 效率更高
+  - 方便代码库及定义之间的跳转（查找定义）
+  - 代码补全
+  - 接口提示
+- 更少的错误
+  - 在运行之前，及时发现错误
+  - 很好的避免读取  `undefined` 上的属性或方法
+- 良好的包容性
+  - `js` 文件可以直接命名为 `ts` 文件运行
+  - 可以为非 `ts` 编写的三方库编写类型文件进行读取
+
+### Vue 和 React
+
+#### React
+
+- 代码实现风格
+  - 将组件抽象成函数，函数型组件
+  - 组件是一个返回特定界面的函数
+  - `hook` 使函数式变成，大行其道
+
+- 数据更新机制
+
+  使用 immutable 方式，调用特定 `useState hook`函数更新界面
+
+- 代码重用性
+
+  `React hooks` 最大的创新，它可以使用给定的 hooks 抽象成一系列的函数，在组件内部使用函数调用的方式来重用逻辑，非常符合正常的思维，也能了解重用逻辑代码的来源和返回。
+
+```react
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+import useMousePosition from "./useMousePosition";
+
+export default function App() {
+  const [count, /* useState hook */ setCount] = useState(0);
+  const positions = useMousePosition(); // hooks 函数
+  useEffect(() => {
+    alert(count)
+  }, [count])
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox {count}</h1>
+      <button onClick={() => setCount(count + 1)}>
+        <h2>Add Count</h2>
+      </button>
+      <h2>{positions.x}</h2>
+      <h2>{positions.y}</h2>
+    </div>
+  );
+}
+```
+
+#### Vue
+
+- 代码实现风格
+
+  单文件组件：模板、数据、样式三者放到一个 `vue` 文件中
+
+- 数据更新机制
+
+  响应式数据。直接修改数据，就可以更新界面，更符合程序员思考模型
+
+- 代码重用性
+
+  `vue3` 推出 `composition api` , 类似 `React` `hooks` 系统。将逻辑抽象为函数，组件内部调用函数获得结果。
+
+```vue
+<template>
+  <h1>Hello CodeSandbox {{ count }}</h1>
+  <button @click="addCount">
+    <h2>Add Count</h2>
+  </button>
+  <h2>{{ x }}</h2>
+  <h2>{{ y }}</h2>
+</template>
+
+<script>
+import { ref } from "vue";
+import useMousePostion from "./useMousePosition"; // 代码复用
+export default {
+  name: "App",
+  setup() {
+    const count = ref(0);
+    const addCount = () => {
+      count.value++;
+    };
+    const { x, y } = useMousePostion();
+    return {
+      count,
+      addCount,
+      x,
+      y,
+    };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+```
+
+### 技术选型说明
+
+<img src="./images/技术选型.png" style="zoom:50%;" />
+
+## 知识点
+
+- `alibaba/form-render`
+
 ## 老师用到的工具
 
 - 协同工具: https://whimsical.com
