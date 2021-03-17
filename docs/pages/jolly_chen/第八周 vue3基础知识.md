@@ -53,3 +53,98 @@
 - 按逻辑组织代码，一个功能对应一个函数，代码组织更集中
 - 在普通情况下，函数使用的参数、返回值更易查找。
 - 在 ts 的加持下，函数参数和返回值的提示更友好。
+
+## 深入响应式对象
+
+1. 保存未来执行修改的代码（effect）
+2. 监测值得改变
+   1. 使用 `proxy` 对象实现
+3. 值改变后，执行 trigger effect
+
+### 监测值得改变
+
+使用 `proxy` 拦截对目标对象的读取：
+
+```js
+const person = {
+  name: 'Jone'
+}
+const handler = {
+  // 目标对象，属性名，代理对象
+  get(target, prop, receiver) {
+    console.log('trigger get')
+    return target[prop]
+  }
+  // 目标对象，属性名，要填入的值，代理对象
+  set(target, prop, value, receiver){
+    console.log('trigger set')
+    traget[prop] = value
+    return true  // 告诉设置成功
+  }
+}
+const proxy = new Proxy(person, handler)
+```
+
+使用 `Reflect` 对象上的静态方法改写：
+
+```js
+const person = {
+  name: 'Jone'
+}
+const handler = {
+  get() {
+    console.log('trigger get')
+    return Reflect.get(...arguments) // Reflect.get() 接收的参数和 handler.get 接收的参数一样
+  }
+  set(){
+    console.log('trigger set')
+    return Reflect.set(...arguments) // Reflect.set() 接收的参数和 handler.set 接收的参数一样
+  }
+}
+const proxy = new Proxy(person, handler)
+```
+
+上面两种方式，执行效果一样
+
+### 存储和触发effect
+
+- 将所有 effect 加入特定的数据结构
+- 创建特定的函数可以再次运行这些 effect
+- 使用 Proxy 的 getter 和 setter，将这些函数放入对应的位置
+
+```js
+let product = { price: 5, count: 2 }
+let total = 0
+let dep = new Set()
+function track() {
+  dep.add(effect)
+}
+function trigger() {
+  dep.forEach(effect => effect()) 
+}
+const reactive = (obj) => {
+  const handler = {
+    get() {
+      let result = Reflect.get(...arguments)
+      track()
+      return result
+    },
+    set() {
+      let result = Reflect.set(...arguments)
+      trigger()
+      return result
+    }
+  }
+  return new Proxy(obj, handler)
+}
+const product = reactive({ price: 5, count: 2 })
+let effect = () => {
+  total = product.price * product.count
+}
+console.log(total)
+product.price = 10
+console.log(`total is ${total}`)
+```
+
+
+
