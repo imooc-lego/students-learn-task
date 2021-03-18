@@ -1,10 +1,10 @@
 # 脚手架架构设计图
 
-![filway-cli 脚手架架构设计图](/Users/zxxiaoxiao/Desktop/OpenSource/webqianduan/students-learn-task/docs/pages/filway/images/filway-cli 脚手架架构设计图.png)
+![filway-cli 脚手架架构设计图](./images/filway-cli 脚手架架构设计图.png)
 
 # 脚手架准备过程
 
-![脚手架准备过程](/Users/zxxiaoxiao/Desktop/OpenSource/webqianduan/students-learn-task/docs/pages/filway/images/脚手架准备过程.png)
+![脚手架准备过程](./images/脚手架准备过程.png)
 
 ```javascript
 //检查版本号,直接加载package.json
