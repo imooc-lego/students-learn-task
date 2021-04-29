@@ -238,7 +238,7 @@ const Test: FunctionComponent<TestProps> = (props) => {
 }
 ```
 
-#### 从 `react` `ts` 定义文件源码得知
+从 `react` `ts` 定义文件源码得知
 
 - 泛型的默认值 `<P = {}>` 
 
@@ -482,11 +482,11 @@ node_modules
 - interface
 - class
 - 泛型
-  - `react` `FunctionComponent` 源码
+  - `react` `FunctionComponent` 定义文件源码
     - 类型别名
     - 联合类型
     - 交叉类型
-    - partial
+    - Partial
       - keyof, in
       - 常量类型
     - extends
@@ -495,7 +495,7 @@ node_modules
 
 内置类型还包括很多
 
-- promise ...
+- Promise ...
 
 ## 学习方法
 
