@@ -395,3 +395,85 @@ export default defineComponent {
     - `watchEffect` 提供参数 `flush` 改变执行顺序。`post` 表示，在 `DOM updated` 之后再执行 `watchEffect`
 
   - React 的执行顺序不可以调整，都是在组件 updated 之后触发
+
+  ###  watch 精准控制 effect
+
+  ```vue
+  <template>
+  	<h1 ref="node">{{msg}}</h1>
+  	<h1>{{count}}</h1>
+  	<a herf="javascript:;" @click="count++">change</a>
+  </template>
+  <script>
+  import { ref, watch, toRefs } from 'vue'
+  export default defineComponent ({
+    props: {
+      msg: string
+    }
+    setup(props) {
+      const node = ref<null | HTMLElement>(null);
+      // 基本使用
+      watch(count, (newV, oldV) => {
+  	  console.log(count.value)
+      });
+      // 响应式对象的值
+      // watch(props.msg, (newV, oldV) => {});// props 是只读的，拿出其中的值，这个值将不再是响应式对象
+      // 方法 1
+      const { msg } = toRefs(props.msg);
+      watch(msg, (newV, oldV) => {});
+      // 方法 2
+      watch(() => props.msg, (newV, oldV) => {});
+      
+      // watch 多个值
+      watch([() => props.msg, count] => props.msg, (newV, oldV) => {
+  	  console.log(newV.value) // [第一个值，第二个值]
+      });
+      return {
+        node
+      };
+    }
+  });
+  ```
+
+  #### watch 的基本用法
+
+  ```js
+  watch(count, (newV, oldV) => {
+    console.log(count.value)
+  });
+  ```
+
+  #### watch 响应式对象的单个值
+
+  - 使用 toRefs
+  - 使用 getter 函数
+
+  ```js
+  // watch(props.msg, (newV, oldV) => {});// props 是只读的，拿出其中的值，这个值将不再是响应式对象
+  // 方法 1
+  const { msg } = toRefs(props.msg);
+  watch(msg, (newV, oldV) => {});
+  // 方法 2
+  watch(() => props.msg, (newV, oldV) => {});
+  ```
+
+  #### watch 多个值
+
+  - 使用数组
+
+  ```js
+  // watch 多个值
+  watch([() => props.msg, count] => props.msg, (newV, oldV) => {
+    console.log(newV.value) // [第一个值，第二个值]
+  });
+  ```
+
+  #### 和 watchEffect 对比
+
+  - 懒执行副作用：针对某个值执行副作用
+  - watch 可以定义什么状态应该触发 watcher 重新运行
+  - watch 可以访问数据变化前后的值，watchEffect 不能
+
+  
+
+  
