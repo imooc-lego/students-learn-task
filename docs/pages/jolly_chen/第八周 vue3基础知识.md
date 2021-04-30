@@ -144,6 +144,8 @@ export default defineComponent ({
 </script>
 ```
 
+- 注意：将 reactive 后的对象属性取出，会**丧失响应性**
+
 #### toRefs
 
 接受 reactive 对象，返回新的对象，但对象的每一项属性，都变成了 ref 类型实例(响应式的)
@@ -474,6 +476,99 @@ export default defineComponent {
   - watch 可以定义什么状态应该触发 watcher 重新运行
   - watch 可以访问数据变化前后的值，watchEffect 不能
 
-  
+## 自定义函数 - hooks
 
-  
+- 将相关的 feature 组合在一起
+- 非常易于重用
+
+### 优点
+
+- 以函数的形式调用，清楚的了解参数和返回的类型
+- 避免命名冲突
+- 代码逻辑脱离组件存在
+
+### 示例
+
+```vue
+<template>
+  <div v-if="todo.loading">Loading todo</div>
+  <div v-else>{{ todo.result && todo.result.title }}</div>
+</template>
+
+<script lang="ts">
+import useURLLoader from '../hooks/useURLLoader'
+interface PostProps {
+  userId: number,
+  id: number,
+  title: string,
+  body: string
+}
+export default {
+  props: {
+    msg: String
+  },
+  setup() {
+    const todo = useURLLoader<PostProps>('url');
+    todo.result
+    return {
+      todo
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
+```
+
+```js
+// useURLLoader.js
+import { reactive } from 'vue'; // 响应式对象
+import axios from 'axios';
+interface  DataProps<T> {
+  result: T | null,
+  loading: boolean,
+  loaded: boolean,
+  error: any
+}
+const useURLLoader = <T = any>(url: string) => {
+  const data = reactive<DataProps<T>>({
+    result: null,
+    loading: true,
+    loaded: false,
+    error: null
+  })
+  axios.get(url).then(resp => {
+    data.result = resp.data;
+    data.loaded = true;
+  }).catch(e => {
+    data.error = e;
+  }).finally(() => {
+    data.loaded = false;
+  });
+  return data;
+};
+
+export default useURLLoader;
+
+```
+
+### 对比 React 的自定义 hooks
+
+- 更新数据的方式
+- 触发的时机
+  - 为什么要包裹在 useEffect 中？
+  - 删除了会有什么问题？
+  - 为什么 Vue3 不需要这样做也可以？
+
+## 其他知识点
+
+- Teleport
+- Fragment
+- Emits Components Options
+- Global API 修改
+- 语法糖
+  - `<srcipt setup>`
+  - `<style vars>`
+
