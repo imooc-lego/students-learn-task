@@ -8,3 +8,9 @@
 - [03-Week03-脚手架核心模块笔记](03-Week03-脚手架核心模块笔记.md)
 ## 第四周
 - [04-Week04-命令注册和执行笔记](04-Week04-命令注册和执行笔记.md)
+## 第五周
+- [05-Week05-第五周笔记](05-Week05-第五周笔记.md)
+## 第五周
+- [06-Week05-inquirer源码解读](06-Week05-inquirer源码解读.md)
+## 第无周
+- [07-Week05-readline源码解读](07-Week05-readline源码解读.md)
